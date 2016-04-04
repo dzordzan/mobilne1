@@ -24,7 +24,14 @@
 
         document.addEventListener("deviceready", onDeviceReady, false);
         function onDeviceReady() {
-            console.log(device.cordova);
+
+            $('#info').append('<p></p>').text(device.model);
+            $('#info').append('<p></p>').text(device.platform);
+            $('#info').append('<p></p>').text(device.uuid);
+            $('#info').append('<p></p>').text(device.version);
+            $('#info').append('<p></p>').text(device.manufacturer);
+            $('#info').append('<p></p>').text(device.isVirtual);
+            $('#info').append('<p></p>').text(device.serial);
         }
     </script>
 </head>
@@ -33,6 +40,7 @@
 <div data-role="header" data-position="fixed" data-theme="a">
     <a href="#outside" data-icon="bars" data-iconpos="notext">Menu</a>
     <h1>Niezbednik studenta</h1>
+
 </div>
 
 <div data-role="page" id="a">
@@ -40,8 +48,9 @@
     <div role="main" class="ui-content">
 
         <h2>Witamy na stronie głównej</h2>
+        <div id="info">
 
-        <p></p>
+        </div>
 
     </div>
 </div>
