@@ -21,18 +21,21 @@
             $("body > [data-role='header']").toolbar();
             $("body > [data-role='header'] [data-role='navbar']").navbar();
         });
-
+        // Wait for device API libraries to load
+        //
         document.addEventListener("deviceready", onDeviceReady, false);
-        function onDeviceReady() {
 
-            $('#info').append('<p></p>').text(device.model);
-            $('#info').append('<p></p>').text(device.platform);
-            $('#info').append('<p></p>').text(device.uuid);
-            $('#info').append('<p></p>').text(device.version);
-            $('#info').append('<p></p>').text(device.manufacturer);
-            $('#info').append('<p></p>').text(device.isVirtual);
-            $('#info').append('<p></p>').text(device.serial);
+        // device APIs are available
+        //
+        function onDeviceReady() {
+            var element = document.getElementById('deviceProperties');
+            element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
+                    'Device Cordova: '  + device.cordova  + '<br />' +
+                    'Device Platform: ' + device.platform + '<br />' +
+                    'Device UUID: '     + device.uuid     + '<br />' +
+                    'Device Version: '  + device.version  + '<br />';
         }
+
     </script>
 </head>
 <body>
@@ -48,9 +51,9 @@
     <div role="main" class="ui-content">
 
         <h2>Witamy na stronie głównej aplikacji</h2>
-        <div id="info">
+        <p id="deviceProperties">
 
-        </div>
+        </p>
 
     </div>
 </div>
