@@ -7,7 +7,8 @@
 
         <h2>Skaner</h2>
  
-        <button id="but">Skaner</button>
+        <button id="but">Koduj</button>
+        <button id="kod">Koduj</button>
 
         <p id="wynik"></p>
     </div>
@@ -20,6 +21,19 @@
             alert("encoding failed: " + fail);
           }
         );
+        });
+        $('#kod').on('click', function() {
+           cordova.plugins.barcodeScanner.scan(
+      function (result) {
+          alert("We got a barcode\n" +
+                "Result: " + result.text + "\n" +
+                "Format: " + result.format + "\n" +
+                "Cancelled: " + result.cancelled);
+      }, 
+      function (error) {
+          alert("Scanning failed: " + error);
+      }
+   ); 
         });
     </script>
 </div>
