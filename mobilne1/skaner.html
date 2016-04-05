@@ -6,17 +6,20 @@
     <div role="main" class="ui-content">
 
         <h2>Skaner</h2>
-        <h3> Podaj liczbe </h3>
-        <input type="integer" id="biorytm" name="biorytm"/>
-        <button id="but">Oblicz</button>
-        <p>Twój biorytm to:</p>
+ 
+        <button id="but">Skaner</button>
+
         <p id="wynik"></p>
     </div>
 
     <script>
         $('#but').on('click', function() {
-            var test = $('#biorytm').val() * 15;
-            $('#wynik').html(test);
+            cordova.plugins.barcodeScanner.encode(cordova.plugins.barcodeScanner.Encode.TEXT_TYPE, "http://www.nytimes.com", function(success) {
+            alert("encode success: " + success);
+          }, function(fail) {
+            alert("encoding failed: " + fail);
+          }
+        );
         });
     </script>
 </div>
